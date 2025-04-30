@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter batch 10',
-      home: Home(),
+      home: HomePage(),
 
     );
   }
