@@ -28,12 +28,15 @@ class Home extends StatelessWidget{
                   print("InkWell Test");
                 },
               ),
-              IconButton(onPressed: (){
+              IconButton(
+                onPressed: (){
                 print("Test button warning");
-              }, icon: Icon(Icons.warning,
-                size: 50,
-              ),
-                // label: Text("Warning",),
+              },
+
+              //   icon: Icon(Icons.warning,
+              //   size: 50,
+              // ),
+                icon: Text("Warning"),
               ),
               TextButton(onPressed: (){
                 Navigator.push(
