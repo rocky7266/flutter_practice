@@ -15,91 +15,163 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[50],
       appBar: AppBar(
-        title: Text('Login Page'),
+        title: Text('Login Page',
+        style: TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.bold
+        ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.cyan,
+        foregroundColor: Colors.white,
       ),
-      body: Center(
-        child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset('asset/testpic.jpeg',
-                  height: 50,
-                  width: 300,),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  // Image.network('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Ffacebook-logo&psig=AOvVaw1rEfEaF4it8wX_7wmc-PTO&ust=1746115338130000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJicudWQgI0DFQAAAAAdAAAAABAE'),
-                  Text('Login with your phone and password'),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Form(
-                      key: _formKey,
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+      body: SingleChildScrollView(
+        padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          alignment: Alignment.center,
+          child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Image.asset('asset/testpic.jpeg',
+              // height: 50,
+              // width: 300,),
+              // SizedBox(
+              //   height: 20,
+              // ),
+              // Image.network('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Ffacebook-logo&psig=AOvVaw1rEfEaF4it8wX_7wmc-PTO&ust=1746115338130000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJicudWQgI0DFQAAAAAdAAAAABAE'),
+              Icon(Icons.facebook,
+              color: Colors.blueAccent,
+              size: 100,),
+              SizedBox(height: 20,),
+              Text('Login with your phone and password',
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: 'serif'
+              ),
+              ),
+              SizedBox(height: 20,),
+              Form(
+                  key: _formKey,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Phone Number'),
+                            Text('Phone Number',
+                            style: TextStyle(
+                              fontFamily: 'serif'
+                            ),
+                            ),
+                            SizedBox(height: 5,),
                             TextFormField(
                               controller: phoneController,
                               decoration: InputDecoration(
-                                hintText: 'Phone Number',
+                                hintText:('Enter your phone number'),
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                // enabledBorder: OutlineInputBorder(
+                                //   borderRadius: BorderRadius.circular(20),
+                                //   borderSide: BorderSide(color: Colors.grey),
+                                // ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                  borderSide: BorderSide(color: Colors.cyan, width: 3),
                                 ),
                               ),
                               validator: (value) {
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter your phone number';
-                                } else {
-                                  return null;
+                                if (value == null || value.trim().isEmpty) {
+                                  return "Please enter your phone number";
                                 }
+                                final trimmed = value.trim();
+                                final pattern = RegExp(r'^(?:\+?88)?01[3-9]\d{8}$');
+                                if (!pattern.hasMatch(trimmed)) {
+                                  return "Please enter a valid Bangladeshi phone number";
+                                }
+                                return null;
                               },
                             ),
-                            SizedBox(
-                              height: 20,
+                          ],
+                        ),
+                        SizedBox(height: 15,),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Password',
+                              style: TextStyle(
+                                fontFamily: 'serif'
+                              ),
                             ),
+                            SizedBox(height: 5,),
                             TextFormField(
                               controller: passwordController,
                               decoration: InputDecoration(
-                                hintText: 'Password',
+                                hintText: 'Enter your password',
                                 border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(50),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                  borderSide: BorderSide(color:Colors.cyan,
+                                  width: 3),
+                                )
                               ),
                               validator: (value) {
                                 if (value == null || value.isEmpty) {
                                   return 'Please enter your password';
-                                } else if (value.length <= 6) {
+                                } else if (value.length <= 5) {
                                   return 'Password must be at least 6 characters';
-                                } else {
+                                }
+                                else if(value !='888356'){
+                                  return 'Wrong Password';
+                                }
+                                else {
                                   return null;
                                 }
                               },
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            SizedBox(
-                                width: 300,
-                                child: ElevatedButton(
-                                    onPressed: () {
-                                      if(_formKey.currentState!.validate()){
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                          SnackBar(content: Text('Login Successful')),
-                                        );
-                                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home(name: phoneController.text,)));
-                                      }
-                                    }, child: Text('Login'))),
-                          ]))
-                ],
-              ),
-            )),
+                          ],
+                        ),
+                        SizedBox(height: 15,),
+                        SizedBox(
+                            width: 300,
+                            child: ElevatedButton(
+                                onPressed: () {
+                                  if(_formKey.currentState!.validate()){
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(content: Text('Login Successful')),
+                                    );
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home(name: phoneController.text,)));
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  elevation: 4,
+                                  backgroundColor: Colors.blue[300],
+                                  foregroundColor: Colors.white
+                                ),
+                                child: Text('Login',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                  fontFamily: 'serif'
+                                ),
+                                ),
+                            )
+                        ),
+                      ]
+                  )
+              )
+            ],
+          ),
+        ),
       ),
+    )
     );
   }
 }
