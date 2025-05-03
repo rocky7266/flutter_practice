@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/gridview.dart';
+import 'package:flutter_practice/statefull_class.dart';
 
 import 'listview.dart';
 import 'module7_class2.dart';
@@ -35,11 +36,12 @@ class Home extends StatelessWidget{
                 },
                     child:
                 Text('HomePage')),
-                ElevatedButton(onPressed: (){
-                  Navigator.pop(context);
-                },
-                    child: 
-                Text('Back'))
+                // ElevatedButton(onPressed: (){
+                //   Navigator.pop(context);
+                // },
+                //     child:
+                // Text('Back')
+                // )
               ],
             ),
             ElevatedButton(onPressed: (){
@@ -53,7 +55,11 @@ class Home extends StatelessWidget{
             },
                 child:
             Text('GridView')
-            )
+            ),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context,MaterialPageRoute(builder: (context)=> StatefulClass()));
+            },
+                child: Text('StateFull'))
           ],
         ),
 

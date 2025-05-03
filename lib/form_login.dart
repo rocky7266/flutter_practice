@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                               decoration: InputDecoration(
                                 prefixIcon: Icon(Icons.phone),
-                                prefixText: '+88',
+                                prefixText: '+88 ',
                                 prefixStyle: TextStyle(color: Colors.black,
                                 fontSize: 20),
                                 hintText:('Enter your phone number'),
