@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/home.dart';
+import 'dart:async';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,6 +13,13 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  bool _isObscure = true;
+  Timer? _hidePasswordTimer;
+  @override
+  void dispose(){
+    _hidePasswordTimer?.cancel();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +80,15 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(height: 5,),
                             TextFormField(
                               controller: phoneController,
+                              keyboardType: TextInputType.phone,
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
                               decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.phone),
+                                prefixText: '+88',
+                                prefixStyle: TextStyle(color: Colors.black,
+                                fontSize: 20),
                                 hintText:('Enter your phone number'),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20),
@@ -112,7 +128,31 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(height: 5,),
                             TextFormField(
                               controller: passwordController,
+                              onChanged: (value) {
+                                _hidePasswordTimer?.cancel();
+                                setState(() {
+                                  _isObscure = false;
+                                });
+                                _hidePasswordTimer = Timer(Duration(seconds: 1), () {
+                                  setState(() {
+                                    _isObscure = true;
+                                  });
+                                });
+                              },
+                              obscureText: _isObscure,
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
                               decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.lock),
+                                suffixIcon: IconButton(
+                                  icon: Icon(_isObscure ? Icons.visibility_off : Icons.visibility),
+                                  onPressed: () {
+                                    setState(() {
+                                      _isObscure = !_isObscure;
+                                    });
+                                  },
+                                ),
                                 hintText: 'Enter your password',
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20),
@@ -146,7 +186,14 @@ class _LoginPageState extends State<LoginPage> {
                                 onPressed: () {
                                   if(_formKey.currentState!.validate()){
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(content: Text('Login Successful')),
+                                      SnackBar(content: Text('Login Successful',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'serif'
+                                      ),
+                                      ),
+                                        backgroundColor: Colors.green,
+                                      ),
                                     );
                                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home(name: phoneController.text,)));
                                   }
