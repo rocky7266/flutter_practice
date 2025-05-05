@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/gridview.dart';
 import 'package:flutter_practice/statefull_class.dart';
+import 'package:flutter_practice/todo.dart';
 
 import 'listview.dart';
+import 'mediaQuery.dart';
 import 'module7_class2.dart';
 
 class Home extends StatelessWidget{
@@ -59,7 +61,18 @@ class Home extends StatelessWidget{
             ElevatedButton(onPressed: (){
               Navigator.push(context,MaterialPageRoute(builder: (context)=> StatefulClass()));
             },
-                child: Text('StateFull'))
+                child: Text('StateFull')
+            ),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context,MaterialPageRoute(builder: (context)=> const TodoApp()));
+            },
+                child: Text('ToDo')
+            ),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context,MaterialPageRoute(builder: (context)=> const ScreenResponsive()));
+            },
+                child: Text('Responsive')
+            ),
           ],
         ),
 
