@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/gridview.dart';
+import 'package:flutter_practice/screenSize.dart';
 import 'package:flutter_practice/statefull_class.dart';
 import 'package:flutter_practice/todo.dart';
 
@@ -72,6 +73,11 @@ class Home extends StatelessWidget{
               Navigator.push(context,MaterialPageRoute(builder: (context)=> const ScreenResponsive()));
             },
                 child: Text('Responsive')
+            ),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context,MaterialPageRoute(builder: (context)=> const AspScreen()));
+            },
+                child: Text('Aspect Ratio')
             ),
           ],
         ),
