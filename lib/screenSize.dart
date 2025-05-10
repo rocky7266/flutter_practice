@@ -40,7 +40,7 @@ class _AspScreenState extends State<AspScreen> {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 10.h,
             ),
 
             Row(
@@ -49,7 +49,7 @@ class _AspScreenState extends State<AspScreen> {
                   flex: 2,
                   child: Container(
                     // width: 100,
-                    height: 100,
+                    height: 100.h,
                     color: Colors.red,
                   ),
                 ),
@@ -57,7 +57,7 @@ class _AspScreenState extends State<AspScreen> {
                   flex: 2,
                   child: Container(
                     // width: 100,
-                    height: 100,
+                    height: 100.h,
                     color: Colors.green,
                   ),
                 ),
@@ -65,28 +65,28 @@ class _AspScreenState extends State<AspScreen> {
                   flex: 1,
                   child: Container(
                     // width: 100,
-                    height: 100,
+                    height: 100.h,
                     color: Colors.blue,
                   ),
                 ),
               ]
             ),
             SizedBox(
-              height: 10,
+              height: 10.h,
             ),
             Container(
-              height: 100,
+              height: 100.h,
               color: Colors.cyan,
             ),
             SizedBox(
-              height: 10,
+              height: 10.h,
             ),
             Container(
-              height: 100,
+              height: 100.h,
               color: Colors.yellow,
             ),
             SizedBox(
-              height: 10,
+              height: 10.h,
             ),
             Row(
               children: [
@@ -108,7 +108,7 @@ class _AspScreenState extends State<AspScreen> {
               ]
 
             ),
-            SizedBox(height: 10,),
+            SizedBox(height: 10.h,),
             AspectRatio(
                 aspectRatio: 16/9,
               child: Container(
