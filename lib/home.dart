@@ -4,6 +4,7 @@ import 'package:flutter_practice/screenSize.dart';
 import 'package:flutter_practice/statefull_class.dart';
 import 'package:flutter_practice/todo.dart';
 
+import 'drawer_tab.dart';
 import 'listview.dart';
 import 'mediaQuery.dart';
 import 'module7_class2.dart';
@@ -74,10 +75,16 @@ class Home extends StatelessWidget{
             },
                 child: Text('Responsive')
             ),
+
             ElevatedButton(onPressed: (){
               Navigator.push(context,MaterialPageRoute(builder: (context)=> const AspScreen()));
             },
                 child: Text('Aspect Ratio')
+            ),
+            ElevatedButton(onPressed: (){
+              Navigator.push(context,MaterialPageRoute(builder: (context)=> const DrawerTab()));
+            },
+                child: Text('Drawer & Tab Bar')
             ),
           ],
         ),
