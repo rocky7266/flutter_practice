@@ -38,8 +38,8 @@ class CourseCard extends StatelessWidget {
           children: [
             // IMAGE
             SizedBox(
-              height: 160,
-              width: 320,
+              // height: 160,
+              // width: 320,
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(12),
@@ -106,7 +106,7 @@ class CourseCard extends StatelessWidget {
                   title,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 8.sp),
+                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
                 ),
               ),
             ),

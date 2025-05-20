@@ -25,6 +25,6 @@ class ResponsiveUtils {
   static double getGridAspectRatio(BuildContext context) {
     if (isDesktop(context)) return .95;
     if (isTablet(context)) return 0.75;
-    return 0.55; // Default for mobile
+    return 0.60; // Default for mobile
   }
 }
