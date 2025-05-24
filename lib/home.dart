@@ -6,6 +6,7 @@ import 'package:flutter_practice/statefull_class.dart';
 import 'package:flutter_practice/todo.dart';
 
 import 'alert.dart';
+import 'calculator_app.dart';
 import 'drawer_tab.dart';
 import 'listview.dart';
 import 'mediaQuery.dart';
@@ -147,6 +148,15 @@ class _HomeState extends State<Home> {
                 );
               },
               child: Text('Alert Dialog'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  CalculatorApp()),
+                );
+              },
+              child: Text('Calculator'),
             ),
           ],
         ),

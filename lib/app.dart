@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/calculator_app.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'form_login.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
     debugShowCheckedModeBanner: false,
     title: 'Flutter batch 10',
-    home: LoginPage(),
+    home: CalculatorApp(),
 
     );
     }
